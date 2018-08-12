@@ -15,7 +15,10 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'echo Deploy'
+        sh '''chmod +x ./jenkins/scripts/deliver.sh
+chmod +x ./jenkins/scripts/kill.sh'''
+        sh './jenkins/scripts/deliver.sh'
+        input(message: 'Are you finish with website using? (click "proceed" to continue)")', ok: './jenkins/scripts/kill.sh')
       }
     }
   }
