@@ -1,11 +1,9 @@
 pipeline {
   agent any
-  environment {
-       CI = 'true'
-  }
   stages {
     stage('Build') {
       steps {
+        git(url: 'https://github.com/tetradev01/nodejsblueocean.git', branch: 'master', poll: true)
         sh 'npm install'
       }
     }
@@ -20,5 +18,8 @@ pipeline {
         sh 'echo Deploy'
       }
     }
+  }
+  environment {
+    CI = 'true'
   }
 }
