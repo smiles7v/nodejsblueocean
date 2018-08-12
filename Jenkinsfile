@@ -18,7 +18,8 @@ pipeline {
         sh '''chmod +x ./jenkins/scripts/deliver.sh
 chmod +x ./jenkins/scripts/kill.sh'''
         sh './jenkins/scripts/deliver.sh'
-        input(message: 'Are you finish with website using? (click "proceed" to continue)")', ok: './jenkins/scripts/kill.sh')
+        input(message: 'Are you finish with website using? (click "proceed" to continue)")', ok: 'Proceed')
+        sh './jenkins/scripts/kill.sh'
       }
     }
   }
