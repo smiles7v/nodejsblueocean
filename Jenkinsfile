@@ -6,6 +6,9 @@ pipeline {
         sh 'npm install'
       }
     }
+    environment {
+       CI = true
+    }
     stage('Test') {
       steps {
         sh 'echo Testing'
